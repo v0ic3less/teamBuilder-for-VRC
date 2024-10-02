@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "929910681984",
+    "project_id": "vrc-team-builder-app",
+    "storage_bucket": "vrc-team-builder-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929910681984:android:3330a7b42fd64670915165",
+        "android_client_info": {
+          "package_name": "com.teambuilder.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929910681984-nm8k221tgad2342i7u699o346582124o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teambuilder.android",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "929910681984-kuorqv9u66063oi91nlbbb0eg8augdr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoq62CP2WUxEZ7DN0QOKsa2pojGlOzhbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929910681984-cfe084fq95qpq267deeqt4v4lsaru0mm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "929910681984-581o11rkhk232ts9gktfuuihk543q1vo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teambuilderVRC.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929910681984:android:edacd9625687cc02915165",
+        "android_client_info": {
+          "package_name": "com.teambuilder.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929910681984-q0b6er9om8pnkh58p4h72jg2bbjuqsna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teambuilder.app",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "929910681984-kuorqv9u66063oi91nlbbb0eg8augdr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoq62CP2WUxEZ7DN0QOKsa2pojGlOzhbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929910681984-cfe084fq95qpq267deeqt4v4lsaru0mm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "929910681984-581o11rkhk232ts9gktfuuihk543q1vo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teambuilderVRC.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929910681984:android:a154f9e055aae98f915165",
+        "android_client_info": {
+          "package_name": "com.teambuilderVRC.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929910681984-ln2njnc2s3as8ej5hmkgngqmcmr2kpgj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teambuilderVRC.app",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "929910681984-kuorqv9u66063oi91nlbbb0eg8augdr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoq62CP2WUxEZ7DN0QOKsa2pojGlOzhbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929910681984-cfe084fq95qpq267deeqt4v4lsaru0mm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "929910681984-581o11rkhk232ts9gktfuuihk543q1vo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teambuilderVRC.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
