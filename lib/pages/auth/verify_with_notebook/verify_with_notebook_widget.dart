@@ -716,6 +716,8 @@ class _VerifyWithNotebookWidgetState extends State<VerifyWithNotebookWidget>
                                                           currentUserUid,
                                                       captainDisplayName:
                                                           currentUserDisplayName,
+                                                      captainRef:
+                                                          currentUserReference,
                                                     ));
                                                     logFirebaseEvent(
                                                         'Button_backend_call');
@@ -729,6 +731,7 @@ class _VerifyWithNotebookWidgetState extends State<VerifyWithNotebookWidget>
                                                             .APIResponse1,
                                                         r'''$.data[:].grade''',
                                                       ).toString(),
+                                                      teamLeader: true,
                                                     ));
                                                     logFirebaseEvent(
                                                         'Button_backend_call');

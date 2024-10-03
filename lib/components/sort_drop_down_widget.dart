@@ -91,7 +91,7 @@ class _SortDropDownWidgetState extends State<SortDropDownWidget> {
                             'SORT_DROP_DOWN_COMP_Row_tlokozvl_ON_TAP');
                         logFirebaseEvent('Row_update_app_state');
                         FFAppState().SortBy = 'teamNum';
-                        _model.updatePage(() {});
+                        FFAppState().update(() {});
                         logFirebaseEvent('Row_close_dialog_drawer_etc');
                         Navigator.pop(context);
                       },
@@ -152,7 +152,7 @@ class _SortDropDownWidgetState extends State<SortDropDownWidget> {
                           'SORT_DROP_DOWN_COMP_Row_73cc812j_ON_TAP');
                       logFirebaseEvent('Row_update_app_state');
                       FFAppState().SortBy = 'rank';
-                      _model.updatePage(() {});
+                      FFAppState().update(() {});
                       logFirebaseEvent('Row_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
@@ -216,7 +216,7 @@ class _SortDropDownWidgetState extends State<SortDropDownWidget> {
                             'SORT_DROP_DOWN_COMP_Row_97z19jht_ON_TAP');
                         logFirebaseEvent('Row_update_app_state');
                         FFAppState().SortBy = 'wp';
-                        _model.updatePage(() {});
+                        FFAppState().update(() {});
                         logFirebaseEvent('Row_close_dialog_drawer_etc');
                         Navigator.pop(context);
                       },

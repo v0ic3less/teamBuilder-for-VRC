@@ -91,13 +91,16 @@ class _MatchNotifsPromptWidgetState extends State<MatchNotifsPromptWidget> {
             Flexible(
               child: Align(
                 alignment: const AlignmentDirectional(0.0, 1.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/MatchNotif-Icon.png',
-                    width: 340.0,
-                    height: 133.0,
-                    fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/MatchNotif-Icon.png',
+                      width: 340.0,
+                      height: 133.0,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),

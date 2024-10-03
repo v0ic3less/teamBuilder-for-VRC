@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/components/home_page_dialogues/tournament_rankings/tournament_rankings_widget.dart';
 import '/components/match_info_card/match_info_card_widget.dart';
-import '/components/team_stack_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -982,18 +981,32 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                         CrossAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Text(
-                                                        'fix',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                      AuthUserStreamWidget(
+                                                        builder: (context) =>
+                                                            Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            functions
+                                                                .calcOPR(
+                                                                    FFAppState()
+                                                                        .APIResponse5,
+                                                                    valueOrDefault(
+                                                                        currentUserDocument
+                                                                            ?.teamID,
+                                                                        0))
+                                                                .toString(),
+                                                            '[1.01]',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -1120,17 +1133,32 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                             CrossAxisAlignment
                                                                 .center,
                                                         children: [
-                                                          Text(
-                                                            'fix',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                          AuthUserStreamWidget(
+                                                            builder:
+                                                                (context) =>
+                                                                    Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                functions
+                                                                    .calcDPR(
+                                                                        FFAppState()
+                                                                            .APIResponse5,
+                                                                        valueOrDefault(
+                                                                            currentUserDocument?.teamID,
+                                                                            0))
+                                                                    .toString(),
+                                                                '[1.01]',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Sora',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
                                                           ),
                                                           if (false)
                                                             SizedBox(
@@ -1254,18 +1282,39 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                         CrossAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Text(
-                                                        'fix',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                      AuthUserStreamWidget(
+                                                        builder: (context) =>
+                                                            Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            functions
+                                                                .calcCCWM(
+                                                                    functions.calcOPR(
+                                                                        FFAppState()
+                                                                            .APIResponse5,
+                                                                        valueOrDefault(
+                                                                            currentUserDocument
+                                                                                ?.teamID,
+                                                                            0)),
+                                                                    functions.calcDPR(
+                                                                        FFAppState()
+                                                                            .APIResponse5,
+                                                                        valueOrDefault(
+                                                                            currentUserDocument?.teamID,
+                                                                            0)))
+                                                                .toString(),
+                                                            '[1.01]',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -1352,7 +1401,82 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
                                                             .spaceBetween,
                                                     children: [
                                                       Text(
-                                                        'WP %',
+                                                        'AP',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 60.0,
+                                          child: VerticalDivider(
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 0.0, 0.0),
+                                            child: Container(
+                                              height: 60.0,
+                                              decoration: const BoxDecoration(),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'fix',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Sora',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'SP',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1891,181 +2015,168 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget>
               ),
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  logFirebaseEvent('EVENT_DETAILS_COMP_contentView_1_ON_TAP');
-                  logFirebaseEvent('contentView_1_bottom_sheet');
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.viewInsetsOf(context),
-                        child: TeamStackWidget(
-                          eventID: getJsonField(
-                            widget.eventRequest,
-                            r'''$.data[0].id''',
-                          ),
-                        ),
-                      );
-                    },
-                  ).then((value) => safeSetState(() {}));
-                },
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        blurRadius: 5.0,
-                        color: Color(0x3416202A),
-                        offset: Offset(
-                          0.0,
-                          2.0,
-                        ),
-                      )
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                      blurRadius: 5.0,
+                      color: Color(0x3416202A),
+                      offset: Offset(
+                        0.0,
+                        2.0,
+                      ),
+                    )
+                  ],
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).accent4,
+                      FlutterFlowTheme.of(context).primaryBackground
                     ],
-                    gradient: LinearGradient(
-                      colors: [
-                        FlutterFlowTheme.of(context).accent4,
-                        FlutterFlowTheme.of(context).primaryBackground
-                      ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(-0.03, -1.0),
-                      end: const AlignmentDirectional(0.03, 1.0),
-                    ),
-                    borderRadius: BorderRadius.circular(11.5),
-                    shape: BoxShape.rectangle,
+                    stops: const [0.0, 1.0],
+                    begin: const AlignmentDirectional(-0.03, -1.0),
+                    end: const AlignmentDirectional(0.03, 1.0),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        logFirebaseEvent(
-                            'EVENT_DETAILS_Container_9yo7psiq_ON_TAP');
-                        logFirebaseEvent('Container_navigate_to');
+                  borderRadius: BorderRadius.circular(11.5),
+                  shape: BoxShape.rectangle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              15.0, 16.0, 8.0, 8.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'EVENT_DETAILS_COMP_Row_0u29o5ya_ON_TAP');
+                              logFirebaseEvent('Row_navigate_to');
 
-                        context.pushNamed(
-                          'Schedule-EventDetails',
-                          queryParameters: {
-                            'teamsMatches': serializeParam(
-                              FFAppState().APIResponse3,
-                              ParamType.JSON,
-                            ),
-                            'eventsMatches': serializeParam(
-                              FFAppState().APIResponse5,
-                              ParamType.JSON,
-                            ),
-                          }.withoutNulls,
-                        );
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 16.0, 8.0, 8.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        2.0, 0.0, 2.0, 0.0),
-                                    child: Icon(
-                                      FFIcons.kusers,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 20.0,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        'All Teams in Event',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Montserrat',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.9, 0.0),
-                                    child: Icon(
-                                      FFIcons.kchevronRight,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 18.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              thickness: 1.0,
-                              indent: 10.0,
-                              endIndent: 10.0,
-                              color: FlutterFlowTheme.of(context).accent4,
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 8.0, 8.0, 16.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.onetwothree,
+                              context.pushNamed('AllTeams');
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      2.0, 0.0, 2.0, 0.0),
+                                  child: Icon(
+                                    FFIcons.kusers,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
-                                    size: 24.0,
+                                    size: 20.0,
                                   ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        'All Matches',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Montserrat',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'All Teams in Event',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Montserrat',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.9, 0.0),
-                                    child: Icon(
-                                      FFIcons.kchevronRight,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 18.0,
-                                    ),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(0.9, 0.0),
+                                  child: Icon(
+                                    FFIcons.kchevronRight,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 18.0,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        Divider(
+                          thickness: 1.0,
+                          indent: 10.0,
+                          endIndent: 10.0,
+                          color: FlutterFlowTheme.of(context).accent4,
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              15.0, 8.0, 8.0, 16.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'EVENT_DETAILS_COMP_Row_rmfz0bn9_ON_TAP');
+                              logFirebaseEvent('Row_navigate_to');
+
+                              context.pushNamed(
+                                'Schedule-EventDetails',
+                                queryParameters: {
+                                  'teamsMatches': serializeParam(
+                                    FFAppState().APIResponse3,
+                                    ParamType.JSON,
+                                  ),
+                                  'eventsMatches': serializeParam(
+                                    FFAppState().APIResponse5,
+                                    ParamType.JSON,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.onetwothree,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'All Matches',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Montserrat',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(0.9, 0.0),
+                                  child: Icon(
+                                    FFIcons.kchevronRight,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 18.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

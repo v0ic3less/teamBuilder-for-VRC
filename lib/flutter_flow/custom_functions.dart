@@ -606,7 +606,10 @@ double? calcOPR(
     List<double> scores = teamScores[teamID]!;
     // OPR is the average score contribution across all matches
     double totalScore = scores.reduce((a, b) => a + b);
-    return totalScore / teamParticipation[teamID]!;
+    double opr = totalScore / teamParticipation[teamID]!;
+
+    // Round to two decimal places and return
+    return double.parse(opr.toStringAsFixed(2));
   } else {
     return null; // Return null if the team has no matches
   }
@@ -673,7 +676,10 @@ double? calcDPR(
     List<double> scoresAgainst = defensiveScores[teamID]!;
     // DPR is the average score against this team across all matches
     double totalScoreAgainst = scoresAgainst.reduce((a, b) => a + b);
-    return totalScoreAgainst / teamParticipation[teamID]!;
+
+    // Round to two decimal places and return
+    return double.parse(
+        (totalScoreAgainst / teamParticipation[teamID]!).toStringAsFixed(2));
   } else {
     return null; // Return null if the team has no matches
   }
@@ -689,7 +695,10 @@ double? calcCCWM(
   }
 
   // CCWM is calculated as the difference between OPR and DPR
-  return opr - dpr;
+  double ccwm = opr - dpr;
+
+  // Round to two decimal places and return
+  return double.parse(ccwm.toStringAsFixed(2));
 }
 
 String? trueSkillParser(
@@ -894,19 +903,22 @@ List<int>? objtoint(List<dynamic>? json) {
   return json.whereType<int>().toList();
 }
 
-double? avgelement(
-  List<int> intList,
-  int amountofDecimals,
+String? avgelement(
+  List<int>? intList,
+  int? amountofDecimals,
 ) {
-  if (intList.isEmpty) {
-    return null;
+  if (intList == null || intList.isEmpty) {
+    return "N/A";
   }
 
   // Sum the elements as double
   double sum = intList
       .map((e) => e.toDouble())
       .reduce((value, element) => value + element);
+
   double average = sum / intList.length;
 
-  return double.parse(average.toStringAsFixed(amountofDecimals));
+  // Format the average to the specified number of decimal places
+  return average.toStringAsFixed(amountofDecimals ??
+      2); // Default to 2 decimal places if amountofDecimals is null
 }

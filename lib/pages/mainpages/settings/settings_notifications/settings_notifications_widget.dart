@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'settings_notifications_model.dart';
 export 'settings_notifications_model.dart';
@@ -106,6 +107,10 @@ class _SettingsNotificationsWidgetState
                           if (newValue) {
                             logFirebaseEvent(
                                 'SETTINGS_NOTIFICATIONS_matchNotifs_ON_TO');
+                            logFirebaseEvent('matchNotifs_custom_action');
+                            await actions.subToTeamPushNotifs(
+                              valueOrDefault(currentUserDocument?.teamNum, ''),
+                            );
                             logFirebaseEvent('matchNotifs_backend_call');
 
                             await currentUserReference!
@@ -115,6 +120,10 @@ class _SettingsNotificationsWidgetState
                           } else {
                             logFirebaseEvent(
                                 'SETTINGS_NOTIFICATIONS_matchNotifs_ON_TO');
+                            logFirebaseEvent('matchNotifs_custom_action');
+                            await actions.unsubFromTeamPushNotifs(
+                              valueOrDefault(currentUserDocument?.teamNum, ''),
+                            );
                             logFirebaseEvent('matchNotifs_backend_call');
 
                             await currentUserReference!
@@ -151,68 +160,70 @@ class _SettingsNotificationsWidgetState
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                      child: AuthUserStreamWidget(
-                        builder: (context) => SwitchListTile.adaptive(
-                          value: _model.eventNotifsValue ??=
-                              valueOrDefault<bool>(
-                                  currentUserDocument?.eventNotifs, false),
-                          onChanged: (newValue) async {
-                            safeSetState(
-                                () => _model.eventNotifsValue = newValue);
-                            if (newValue) {
-                              logFirebaseEvent(
-                                  'SETTINGS_NOTIFICATIONS_eventNotifs_ON_TO');
-                              logFirebaseEvent('eventNotifs_backend_call');
+                    if (false)
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => SwitchListTile.adaptive(
+                            value: _model.eventNotifsValue ??=
+                                valueOrDefault<bool>(
+                                    currentUserDocument?.eventNotifs, false),
+                            onChanged: (newValue) async {
+                              safeSetState(
+                                  () => _model.eventNotifsValue = newValue);
+                              if (newValue) {
+                                logFirebaseEvent(
+                                    'SETTINGS_NOTIFICATIONS_eventNotifs_ON_TO');
+                                logFirebaseEvent('eventNotifs_backend_call');
 
-                              await currentUserReference!
-                                  .update(createUsersRecordData(
-                                eventNotifs: _model.eventNotifsValue,
-                              ));
-                            } else {
-                              logFirebaseEvent(
-                                  'SETTINGS_NOTIFICATIONS_eventNotifs_ON_TO');
-                              logFirebaseEvent('eventNotifs_backend_call');
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  eventNotifs: _model.eventNotifsValue,
+                                ));
+                              } else {
+                                logFirebaseEvent(
+                                    'SETTINGS_NOTIFICATIONS_eventNotifs_ON_TO');
+                                logFirebaseEvent('eventNotifs_backend_call');
 
-                              await currentUserReference!
-                                  .update(createUsersRecordData(
-                                eventNotifs: _model.eventNotifsValue,
-                              ));
-                            }
-                          },
-                          title: Text(
-                            'Key Event Notifications',
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Montserrat',
-                                      letterSpacing: 0.0,
-                                      lineHeight: 2.0,
-                                    ),
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  eventNotifs: _model.eventNotifsValue,
+                                ));
+                              }
+                            },
+                            title: Text(
+                              'Key Event Notifications',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    letterSpacing: 0.0,
+                                    lineHeight: 2.0,
+                                  ),
+                            ),
+                            subtitle: Text(
+                              'Recieve a push or in-app notification for an upcoming key event, such as before a Driver\'s Meeting or before Skills closes.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    color: const Color(0xFF8B97A2),
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            activeColor: FlutterFlowTheme.of(context).primary,
+                            activeTrackColor:
+                                FlutterFlowTheme.of(context).accent1,
+                            dense: false,
+                            controlAffinity: ListTileControlAffinity.trailing,
+                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
                           ),
-                          subtitle: Text(
-                            'Recieve a push or in-app notification for an upcoming key event, such as before a Driver\'s Meeting or before Skills closes.',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Montserrat',
-                                  color: const Color(0xFF8B97A2),
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          activeColor: FlutterFlowTheme.of(context).primary,
-                          activeTrackColor:
-                              FlutterFlowTheme.of(context).accent1,
-                          dense: false,
-                          controlAffinity: ListTileControlAffinity.trailing,
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
                         ),
                       ),
-                    ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
@@ -251,8 +262,12 @@ class _SettingsNotificationsWidgetState
                       ),
                       tileColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      activeColor: FlutterFlowTheme.of(context).primary,
-                      activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                      activeColor: true
+                          ? FlutterFlowTheme.of(context).secondaryBackground
+                          : FlutterFlowTheme.of(context).primary,
+                      activeTrackColor: true
+                          ? FlutterFlowTheme.of(context).primaryBackground
+                          : FlutterFlowTheme.of(context).accent1,
                       dense: false,
                       controlAffinity: ListTileControlAffinity.trailing,
                       contentPadding:

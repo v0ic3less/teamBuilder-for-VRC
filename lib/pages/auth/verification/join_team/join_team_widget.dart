@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -221,20 +220,6 @@ class _JoinTeamWidgetState extends State<JoinTeamWidget> {
                                                   .getDocumentOnce(
                                                       currentUserDocument!
                                                           .teamRef!);
-                                              logFirebaseEvent(
-                                                  'Button_trigger_push_notification');
-                                              triggerPushNotification(
-                                                notificationTitle:
-                                                    'Team Join Request',
-                                                notificationText:
-                                                    '$currentUserDisplayName wants to join your team. Tap to tell them the code.',
-                                                userRefs: [
-                                                  _model.teamDoc!.captainRef!
-                                                ],
-                                                initialPageName:
-                                                    'AddTeamMember',
-                                                parameterData: {},
-                                              );
                                               logFirebaseEvent(
                                                   'Button_navigate_to');
 

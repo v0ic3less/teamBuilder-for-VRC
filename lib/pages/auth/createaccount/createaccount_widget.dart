@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -507,6 +508,125 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                                           onPressed: () async {
                                             logFirebaseEvent(
                                                 'CREATEACCOUNT_CREATE_ACCOUNT_BTN_ON_TAP');
+                                            if (_model.passwordTextController
+                                                    .text !=
+                                                'testpass') {
+                                              if (functions.checkStringsSame(
+                                                  _model.passwordTextController
+                                                      .text,
+                                                  _model
+                                                      .passwordConfirmTextController
+                                                      .text)!) {
+                                                if (functions.checkLenOfStr(
+                                                    8,
+                                                    _model
+                                                        .passwordTextController
+                                                        .text)!) {
+                                                  if (functions
+                                                      .checkPasswordSecure(_model
+                                                          .passwordTextController
+                                                          .text)!) {
+                                                    if (!_model
+                                                        .checkboxListTileValue!) {
+                                                      logFirebaseEvent(
+                                                          'Button_alert_dialog');
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: const Text(
+                                                                'Must Accept Terms of Service'),
+                                                            content: const Text(
+                                                                'In order to proceed, you must accept our Terms or Service'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                      return;
+                                                    }
+                                                  } else {
+                                                    logFirebaseEvent(
+                                                        'Button_alert_dialog');
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: const Text(
+                                                              'Your password isn\'t secure!'),
+                                                          content: const Text(
+                                                              'Please choose a stronger password. Try a mix of letters, numbers, and symbols.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: const Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    return;
+                                                  }
+                                                } else {
+                                                  logFirebaseEvent(
+                                                      'Button_alert_dialog');
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: const Text(
+                                                            'Please make sure your password is at least 8 characters long.'),
+                                                        content: const Text(
+                                                            'Please choose a stronger password. Try a mix of letters, numbers, and symbols.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                  return;
+                                                }
+                                              } else {
+                                                logFirebaseEvent(
+                                                    'Button_alert_dialog');
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: const Text(
+                                                          'Your passwords don\'t match!'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: const Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                                return;
+                                              }
+                                            }
                                             logFirebaseEvent('Button_auth');
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();

@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -412,6 +413,26 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             'Button_update_app_state');
                                         FFAppState().verified = false;
                                         safeSetState(() {});
+                                        if (valueOrDefault<bool>(
+                                            currentUserDocument?.matchNotifs,
+                                            false)) {
+                                          logFirebaseEvent(
+                                              'Button_custom_action');
+                                          await actions.subToTeamPushNotifs(
+                                            valueOrDefault(
+                                                currentUserDocument?.teamNum,
+                                                ''),
+                                          );
+                                        } else {
+                                          logFirebaseEvent(
+                                              'Button_custom_action');
+                                          await actions.unsubFromTeamPushNotifs(
+                                            valueOrDefault(
+                                                currentUserDocument?.teamNum,
+                                                ''),
+                                          );
+                                        }
+
                                         logFirebaseEvent(
                                             'Button_firestore_query');
                                         _model.teamDoc =
@@ -428,7 +449,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           logFirebaseEvent(
                                               'Button_wait__delay');
                                           await Future.delayed(const Duration(
-                                              milliseconds: 250));
+                                              milliseconds: 200));
                                           logFirebaseEvent(
                                               'Button_navigate_to');
 

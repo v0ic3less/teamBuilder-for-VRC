@@ -675,7 +675,7 @@ class _ScheduleEventDetailsWidgetState extends State<ScheduleEventDetailsWidget>
                                                                                 ),
                                                                             ],
                                                                           ),
-                                                                        if ((getJsonField(
+                                                                        if (!((getJsonField(
                                                                                   widget.teamsMatches,
                                                                                   r'''$.alliances[0].score''',
                                                                                 ) !=
@@ -684,7 +684,7 @@ class _ScheduleEventDetailsWidgetState extends State<ScheduleEventDetailsWidget>
                                                                                   widget.teamsMatches,
                                                                                   r'''$.alliances[1].score''',
                                                                                 ) !=
-                                                                                null))
+                                                                                null)))
                                                                           Expanded(
                                                                             child:
                                                                                 Row(
@@ -722,33 +722,6 @@ class _ScheduleEventDetailsWidgetState extends State<ScheduleEventDetailsWidget>
                                                                               ],
                                                                             ),
                                                                           ),
-                                                                        Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            getJsonField(
-                                                                              matchItemItem,
-                                                                              r'''$.alliances[0].score''',
-                                                                            )?.toString(),
-                                                                            '--',
-                                                                          ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .headlineSmall
-                                                                              .override(
-                                                                                fontFamily: 'Sora',
-                                                                                color: const Color(0xFF84AAEC),
-                                                                                letterSpacing: 0.0,
-                                                                              ),
-                                                                        ),
-                                                                        Text(
-                                                                          '35',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .headlineSmall
-                                                                              .override(
-                                                                                fontFamily: 'Sora',
-                                                                                color: const Color(0xFF84AAEC),
-                                                                                letterSpacing: 0.0,
-                                                                              ),
-                                                                        ),
                                                                         Row(
                                                                           mainAxisSize:
                                                                               MainAxisSize.max,
@@ -812,6 +785,62 @@ class _ScheduleEventDetailsWidgetState extends State<ScheduleEventDetailsWidget>
                                                                                                     )?.toString(),
                                                                                                     '[tm1]',
                                                                                                   )) {
+                                                                                                return 16.0;
+                                                                                              } else {
+                                                                                                return 15.0;
+                                                                                              }
+                                                                                            }(),
+                                                                                            letterSpacing: 0.0,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  AuthUserStreamWidget(
+                                                                                    builder: (context) => Text(
+                                                                                      valueOrDefault<String>(
+                                                                                        getJsonField(
+                                                                                          matchItemItem,
+                                                                                          r'''$.alliances[0].teams[1].team.name''',
+                                                                                        )?.toString(),
+                                                                                        '[tm4]',
+                                                                                      ),
+                                                                                      textAlign: TextAlign.end,
+                                                                                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                            fontFamily: 'Montserrat',
+                                                                                            color: () {
+                                                                                              if (valueOrDefault(currentUserDocument?.teamNum, '') ==
+                                                                                                  valueOrDefault<String>(
+                                                                                                    getJsonField(
+                                                                                                      matchItemItem,
+                                                                                                      r'''$.alliances[0].teams[1].team.name''',
+                                                                                                    )?.toString(),
+                                                                                                    '[tm1]',
+                                                                                                  )) {
+                                                                                                return FlutterFlowTheme.of(context).primaryText;
+                                                                                              } else if (valueOrDefault(currentUserDocument?.teamNum, '') ==
+                                                                                                  getJsonField(
+                                                                                                    matchItemItem,
+                                                                                                    r'''$.alliances[0].teams[0].team.name''',
+                                                                                                  ).toString()) {
+                                                                                                return FlutterFlowTheme.of(context).secondaryText;
+                                                                                              } else {
+                                                                                                return FlutterFlowTheme.of(context).info;
+                                                                                              }
+                                                                                            }(),
+                                                                                            fontSize: () {
+                                                                                              if (valueOrDefault(currentUserDocument?.teamNum, '') ==
+                                                                                                  valueOrDefault<String>(
+                                                                                                    getJsonField(
+                                                                                                      matchItemItem,
+                                                                                                      r'''$.alliances[0].teams[1].team.name''',
+                                                                                                    )?.toString(),
+                                                                                                    '[tm1]',
+                                                                                                  )) {
+                                                                                                return 17.0;
+                                                                                              } else if (valueOrDefault(currentUserDocument?.teamNum, '') ==
+                                                                                                  getJsonField(
+                                                                                                    matchItemItem,
+                                                                                                    r'''$.alliances[0].teams[0].team.name''',
+                                                                                                  ).toString()) {
                                                                                                 return 16.0;
                                                                                               } else {
                                                                                                 return 15.0;
@@ -1272,11 +1301,16 @@ class _ScheduleEventDetailsWidgetState extends State<ScheduleEventDetailsWidget>
                                                                                 ),
                                                                             ],
                                                                           ),
-                                                                        if ('true' ==
-                                                                            getJsonField(
-                                                                              widget.eventsMatches,
-                                                                              r'''$.scored''',
-                                                                            ).toString())
+                                                                        if (!((getJsonField(
+                                                                                  widget.teamsMatches,
+                                                                                  r'''$.alliances[0].score''',
+                                                                                ) !=
+                                                                                null) &&
+                                                                            (getJsonField(
+                                                                                  widget.teamsMatches,
+                                                                                  r'''$.alliances[1].score''',
+                                                                                ) !=
+                                                                                null)))
                                                                           Expanded(
                                                                             child:
                                                                                 Row(

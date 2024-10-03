@@ -904,7 +904,7 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                                                                 functions.allianceColorFinder(FFAppState().APIResponse13, widget.teamID)!.toList())
                                                                                                             .toList()))
                                                                                                     : '!',
-                                                                                                '%',
+                                                                                                '[15]%',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                     fontFamily: 'Sora',
@@ -952,7 +952,7 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                                                   FFAppState().APIResponse12,
                                                                                                   r'''$[:].wp''',
                                                                                                 )?.toString(),
-                                                                                                'wp',
+                                                                                                '[4]',
                                                                                               ),
                                                                                               style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                                     fontFamily: 'Sora',
@@ -1113,7 +1113,7 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                                             ),
                                                                                           ),
                                                                                           Text(
-                                                                                            'AWP%',
+                                                                                            'Event Skills',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Montserrat',
                                                                                                   letterSpacing: 0.0,
@@ -1474,20 +1474,6 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                       .teamID,
                                                                 ),
                                                               ),
-                                                              SizedBox(
-                                                                width: 0.0,
-                                                                height: 0.0,
-                                                                child: custom_widgets
-                                                                    .TeamInfoAPIforRest(
-                                                                  season: getRemoteConfigInt(
-                                                                          'V5RCseason')
-                                                                      .toString(),
-                                                                  width: 0.0,
-                                                                  height: 0.0,
-                                                                  teamID: widget
-                                                                      .teamID,
-                                                                ),
-                                                              ),
                                                               Padding(
                                                                 padding:
                                                                     const EdgeInsetsDirectional
@@ -1640,8 +1626,6 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                       'rankings',
                                                                   id: widget
                                                                       .teamID,
-                                                                  season: getRemoteConfigInt(
-                                                                      'V5RCseason'),
                                                                 ),
                                                                 builder: (context,
                                                                     snapshot) {
@@ -1684,42 +1668,72 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                             child:
                                                                                 Padding(
                                                                               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                                                                              child: Container(
-                                                                                decoration: BoxDecoration(
-                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                  borderRadius: BorderRadius.circular(10.0),
-                                                                                  border: Border.all(
-                                                                                    color: FlutterFlowTheme.of(context).alternate,
-                                                                                    width: 2.0,
-                                                                                  ),
+                                                                              child: FutureBuilder<ApiCallResponse>(
+                                                                                future: RobotEventsCall.call(
+                                                                                  method1: 'teams',
+                                                                                  method2: 'awards',
+                                                                                  id: widget.teamID,
+                                                                                  season: getRemoteConfigInt('V5RCseason'),
                                                                                 ),
-                                                                                child: Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(13.0, 13.0, 13.0, 13.0),
-                                                                                  child: Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    children: [
-                                                                                      Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                                                                                        child: Text(
-                                                                                          'fix',
-                                                                                          style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                                fontFamily: 'Sora',
-                                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                fontSize: 30.0,
-                                                                                                letterSpacing: 0.0,
-                                                                                              ),
+                                                                                builder: (context, snapshot) {
+                                                                                  // Customize what your widget looks like when it's loading.
+                                                                                  if (!snapshot.hasData) {
+                                                                                    return Center(
+                                                                                      child: SizedBox(
+                                                                                        width: 35.0,
+                                                                                        height: 35.0,
+                                                                                        child: SpinKitSquareCircle(
+                                                                                          color: FlutterFlowTheme.of(context).primary,
+                                                                                          size: 35.0,
                                                                                         ),
                                                                                       ),
-                                                                                      Text(
-                                                                                        'Awards',
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Montserrat',
-                                                                                              letterSpacing: 0.0,
-                                                                                            ),
+                                                                                    );
+                                                                                  }
+                                                                                  final containerRobotEventsResponse = snapshot.data!;
+
+                                                                                  return Container(
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                      borderRadius: BorderRadius.circular(10.0),
+                                                                                      border: Border.all(
+                                                                                        color: FlutterFlowTheme.of(context).alternate,
+                                                                                        width: 2.0,
                                                                                       ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(13.0, 13.0, 13.0, 13.0),
+                                                                                      child: Column(
+                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                        children: [
+                                                                                          Padding(
+                                                                                            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                                                                                            child: Text(
+                                                                                              valueOrDefault<String>(
+                                                                                                RobotEventsCall.awardNumber(
+                                                                                                  containerRobotEventsResponse.jsonBody,
+                                                                                                )?.toString(),
+                                                                                                '[4]',
+                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                                    fontFamily: 'Sora',
+                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                    fontSize: 30.0,
+                                                                                                    letterSpacing: 0.0,
+                                                                                                  ),
+                                                                                            ),
+                                                                                          ),
+                                                                                          Text(
+                                                                                            'Award Amt.',
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  letterSpacing: 0.0,
+                                                                                                ),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    ),
+                                                                                  );
+                                                                                },
                                                                               ),
                                                                             ),
                                                                           ),
@@ -1745,14 +1759,11 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                                         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                         child: Text(
                                                                                           valueOrDefault<String>(
-                                                                                            functions
-                                                                                                .avgelement(
-                                                                                                    RobotEventsCall.rank(
-                                                                                                      columnRobotEventsResponse.jsonBody,
-                                                                                                    )!
-                                                                                                        .toList(),
-                                                                                                    1)
-                                                                                                .toString(),
+                                                                                            functions.avgelement(
+                                                                                                RobotEventsCall.rank(
+                                                                                                  columnRobotEventsResponse.jsonBody,
+                                                                                                )?.toList(),
+                                                                                                1),
                                                                                             '[1.2]',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -1964,14 +1975,11 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                                                                         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                                                                                         child: Text(
                                                                                           valueOrDefault<String>(
-                                                                                            functions
-                                                                                                .avgelement(
-                                                                                                    RobotEventsCall.winPoints(
-                                                                                                      columnRobotEventsResponse.jsonBody,
-                                                                                                    )!
-                                                                                                        .toList(),
-                                                                                                    1)
-                                                                                                .toString(),
+                                                                                            functions.avgelement(
+                                                                                                RobotEventsCall.winPoints(
+                                                                                                  columnRobotEventsResponse.jsonBody,
+                                                                                                )?.toList(),
+                                                                                                1),
                                                                                             '[12.2]',
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -2535,44 +2543,64 @@ class _TeamInfoWidgetWidgetState extends State<TeamInfoWidgetWidget>
                                 onPressed: () async {
                                   logFirebaseEvent(
                                       'TEAM_INFO_WIDGET_COMP_SAVE_BTN_ON_TAP');
-                                  if ((authUserRefTeamsRecord?.teamNotes[
-                                              functions.getIndex(
-                                                  widget.teamID!,
-                                                  authUserRefTeamsRecord
-                                                      .notesID
-                                                      .toList())!]) ==
-                                          _model.teamNoteTextController.text
-                                      ? true
-                                      : false) {
+                                  if (authUserRefTeamsRecord!.notesID
+                                      .contains(containerTeamsRecord?.teamID)) {
+                                    if ((authUserRefTeamsRecord.teamNotes[
+                                                functions.getIndex(
+                                                    widget.teamID!,
+                                                    authUserRefTeamsRecord
+                                                        .notesID
+                                                        .toList())!]) ==
+                                            _model.teamNoteTextController.text
+                                        ? true
+                                        : false) {
+                                      logFirebaseEvent('Button_backend_call');
+
+                                      await currentUserDocument!.teamRef!
+                                          .update({
+                                        ...mapToFirestore(
+                                          {
+                                            'teamNotes':
+                                                FieldValue.arrayRemove([
+                                              authUserRefTeamsRecord
+                                                      .teamNotes[
+                                                  functions.getIndex(
+                                                      widget.teamID!,
+                                                      authUserRefTeamsRecord
+                                                          .notesID
+                                                          .toList())!]
+                                            ]),
+                                            'notesID': FieldValue.arrayRemove(
+                                                [widget.teamID]),
+                                          },
+                                        ),
+                                      });
+                                      logFirebaseEvent('Button_backend_call');
+
+                                      await authUserRefTeamsRecord.reference
+                                          .update({
+                                        ...mapToFirestore(
+                                          {
+                                            'teamNotes': FieldValue.arrayUnion([
+                                              _model.teamNoteTextController.text
+                                            ]),
+                                            'notesID': FieldValue.arrayUnion(
+                                                [widget.teamID]),
+                                          },
+                                        ),
+                                      });
+                                    }
+                                  } else {
                                     logFirebaseEvent('Button_backend_call');
 
                                     await currentUserDocument!.teamRef!.update({
                                       ...mapToFirestore(
                                         {
-                                          'teamNotes': FieldValue.arrayRemove([
-                                            authUserRefTeamsRecord?.teamNotes[
-                                                functions.getIndex(
-                                                    widget.teamID!,
-                                                    authUserRefTeamsRecord
-                                                        .notesID
-                                                        .toList())!]
-                                          ]),
-                                          'notesID': FieldValue.arrayRemove(
-                                              [widget.teamID]),
-                                        },
-                                      ),
-                                    });
-                                    logFirebaseEvent('Button_backend_call');
-
-                                    await authUserRefTeamsRecord!.reference
-                                        .update({
-                                      ...mapToFirestore(
-                                        {
+                                          'notesID': FieldValue.arrayUnion(
+                                              [containerTeamsRecord?.teamID]),
                                           'teamNotes': FieldValue.arrayUnion([
                                             _model.teamNoteTextController.text
                                           ]),
-                                          'notesID': FieldValue.arrayUnion(
-                                              [widget.teamID]),
                                         },
                                       ),
                                     });
